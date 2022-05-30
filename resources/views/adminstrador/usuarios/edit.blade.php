@@ -1,0 +1,56 @@
+@extends('padrao.padrao')
+
+@section('content')
+    <h1 class="h3 mb-2 text-gray-800">Editar Usuario</h1>
+    <a href="{{ route('usuario.index') }}" class="btn btn-warning">Voltar</a>
+    <br><br>
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="card ">
+            <div class="card-header">
+                Dados do Usuario
+            </div>
+
+            <div class="card-body">
+                <form action="{{ route('usuario.update',$usuario) }}" method="post">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="form-group">
+                        <label for="">Nome</label>
+                        <input type="text" name="name" value="{{$usuario->name}}" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="email" name="email" value="{{$usuario->email}}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">CPF</label>
+                        <input type="text" name="cpf" value="{{$usuario->cpf}}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">RG</label>
+                        <input type="text" name="rg" value="{{$usuario->rg}}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Telefone</label>
+                        <input type="text" name="telefone" value="{{$usuario->telefone}}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Nascimento</label>
+                        <input id="nascimento"  placeholder="Data de Nascimento" class="form-control" type="date"
+                             name="nascimento"
+                            value="{{$usuario->nascimento}}" required autocomplete="nascimento" />
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success">Cadastrar</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+@endsection
