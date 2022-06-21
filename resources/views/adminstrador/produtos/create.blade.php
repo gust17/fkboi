@@ -28,13 +28,11 @@
                         <input name="taxa_mes" type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="">Ordem</label>
-                        <input type="number" name="ordem" class="form-control">
+                        <label for="">Taxa Ano</label>
+                        <input name="taxa_ano" type="text" class="form-control">
                     </div>
-                    <div class="form-group">
-                        <label for="">Imagem</label>
-                        <input type="file" class="form-control" name="file">
-                    </div>
+
+
                     <div class="form-group">
                         <label for="">Descriçao</label>
                         <textarea name="descricao" id="" class="form-control" cols="30" rows="10"></textarea>

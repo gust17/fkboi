@@ -1,20 +1,18 @@
 @extends('padrao.padrao')
 @section('css')
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
     <br><br>
 
     <div class="container">
-        <div class="card collapsed-box">
+        <div class="card">
             <div class="card-header">
-                <h3 class="card-title"> Minha Conta</h3>
-                <div class="card-tools pull-right">
-
-                </div>
+                <h5 class="card-title"> Minha Conta</h5>
             </div>
             <div class="card-body">
+
 
                 <div class="form-group">
                     <label for="">Nome:</label>
@@ -36,49 +34,18 @@
 
             </div>
         </div>
-        <div class="card collapsed-box">
+        <br>
+        <div class="card">
             <div class="card-header">
                 <h3 class="card-title"> Minha Conta</h3>
                 <div class="card-tools pull-right">
 
                 </div>
             </div>
-            <div class="card-body">
 
-                <div class="form-group">
-                    <label for="">Nome:</label>
-                    <label for="">{{ Auth::user()->name }}</label>
-                </div>
-                <div class="form-group">
-                    <label for="">CPF/CNPJ:</label>
-                    <label for="">{{ Auth::user()->cpf }}</label>
-                </div>
-                <div class="form-group">
-                    <label for="">RG:</label>
-                    <label for="">{{ Auth::user()->rg }}</label>
-                </div>
-                <div class="form-group">
-                    <label for="">Orgão Expedidor:</label>
-                    <label for="">{{ Auth::user()->expedidor }}</label>
-                </div>
-                <div class="form-group">
-                    <label for="">TELEFONE:</label>
-                    <label for="">{{ Auth::user()->telefone }}</label>
-                </div>
-
-                <div class="form-group">
-                    <label for="">Email:</label>
-                    <label for="">{{ Auth::user()->email }}</label>
-                </div>
-                <div class="form-group">
-                    <label for="">Telefone:</label>
-                    <label for="">{{ Auth::user()->telefone }}</label>
-                </div>
-
-
-            </div>
         </div>
-        <div class="card collapsed-box">
+        <br>
+        <div class="card">
             <div class="card-header">
                 <h3 class="card-title"> Dados Complementares</h3>
                 <div class="card-tools pull-right">
@@ -106,6 +73,7 @@
 
             </div>
         </div>
+        <br>
 
         @if (!Auth::user()->endereco)
             <div class="card collapsed-box">
@@ -271,13 +239,12 @@
             </div>
         @endif
 
-        <div class="card collapsed-box">
+        <div class="card">
             <div class="card-header">
                 <h3 class="card-title"> Dados Bancarios</h3>
 
             </div>
-            <div class="card
-            -body">
+            <div class="card-body">
 
 
                 <form action="{{ url('cadconta') }}" method="post">
@@ -288,7 +255,7 @@
                             <option value=""></option>
                         </select>
                     </div>
-                    <input type="hidden" name="name">
+                    <input type="hidden" name="name" id="banco">
                     <div class="form-group">
                         <label for="">Cod Banco</label>
                         <input type="text" id="code" name="code" class="form-control">
@@ -303,7 +270,8 @@
                     </div>
                     <div class="form-group">
                         <label for="">Tipo Chave</label>
-                        <select class="form-control" name="tipochave" id="">
+
+                        <select class="form-control" name="tipo_chave" id="">
                             <option value="1">CPF</option>
                             <option value="2">EMAIL</option>
                             <option value="3">CELULAR</option>
@@ -312,11 +280,14 @@
                     </div>
                     <div class="form-group">
                         <label for="">Chave Pix</label>
-                       <input class="form-control" type="text" name="chavepix" id="">
+                        <input class="form-control" type="text" name="pix" id="">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success btn-block">Cadastrar</button>
+                        <button style="background-color: #00ff75;color:black" class="btn btn-block">
+                           Cadastrar
+                        </button>
                     </div>
+
                 </form>
                 <br>
 
@@ -346,6 +317,7 @@
                 </table>
             </div>
         </div>
+        <br>
 
 
 
@@ -396,7 +368,7 @@
                     success: function(data) {
                         // alert(data.code);
                         $('input[name="code"]').val(data.code);
-                        $('input[name="name"]').val(data.name);
+                        $('#banco').val(data.name);
                     }
                 });
             });
@@ -424,36 +396,5 @@
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-    <script>
-        $(document).ready(function() {
 
-            $('form').ajaxForm({
-                beforeSend: function() {
-                    $('#success').empty();
-                },
-                uploadProgress: function(event, position, total, percentComplete) {
-                    $('.progress-bar').text(percentComplete + '%');
-                    $('.progress-bar').css('width', percentComplete + '%');
-                },
-                success: function(data) {
-                    if (data.errors) {
-                        $('.progress-bar').text('0%');
-                        $('.progress-bar').css('width', '0%');
-                        $('#success').html('<span class="text-danger"><b>' + data.errors +
-                            '</b></span>');
-                    }
-                    if (data.success) {
-                        $('.progress-bar').text('Uploaded');
-                        $('.progress-bar').css('width', '100%');
-                        $('#success').html('<span class="text-success"><b>' + data.success +
-                            '</b></span><br /><br />');
-                        $('#success').append(data.image);
-
-                        location.reload();
-                    }
-                }
-            });
-
-        });
-    </script>
 @endsection

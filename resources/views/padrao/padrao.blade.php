@@ -20,7 +20,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     @yield('css')
-    @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
+    @include('sweetalert::alert')
+
 
 
 </head>
@@ -104,6 +105,12 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/meusinvestimentos') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Minhas Carteiras</span></a>
+            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
@@ -363,16 +370,10 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     @include('sweetalert::alert')
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+
                     <!-- Page Heading -->
+
+
                     @yield('content')
 
 
@@ -442,6 +443,8 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
+
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
     @yield('js')
 

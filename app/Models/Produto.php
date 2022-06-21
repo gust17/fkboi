@@ -13,7 +13,14 @@ class Produto extends Model
         'name',
         'meses',
         'taxa_mes',
-        'ordem'
+        'ordem',
+        'img',
+        'descricao',
+        'taxa_mes',
+        'taxa_ano',
+        'taxa_mes',
+        'taxa_ano',
+        'ativo'
 
     ];
 }

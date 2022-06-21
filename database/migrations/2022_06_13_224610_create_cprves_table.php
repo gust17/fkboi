@@ -13,16 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contas', function (Blueprint $table) {
+        Schema::create('cprves', function (Blueprint $table) {
             $table->id();
-            $table->string("banco_id");
-            $table->string("name");
-            $table->string("code");
-            $table->string("agencia");
-            $table->string("conta");
-            $table->integer('tipo_chave');
-            $table->string('pix');
-            $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -34,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contas');
+        Schema::dropIfExists('cprves');
     }
 };

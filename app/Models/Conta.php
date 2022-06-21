@@ -16,5 +16,7 @@ class Conta extends Model
         'agencia',
         'conta',
         'user_id',
+        'tipo_chave',
+        "pix"
     ];
 }

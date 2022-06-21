@@ -40,9 +40,9 @@ class ProdutoController extends Controller
      */
     public function store(ProdutoRequest $request)
     {
-        Produto::create($request->all());
-        Alert::success('Success Title', 'Success Message');
-        return redirect()->route('produto.index');
+        $produto = Produto::create($request->all());
+
+        return redirect()->route('produto.cadimg', $produto->id);
     }
 
     /**
@@ -91,5 +91,11 @@ class ProdutoController extends Controller
     public function destroy(Produto $produto)
     {
         //
+    }
+
+    public function cadimg($id)
+    {
+        $produto = Produto::find($id);
+        return view('adminstrador.produtos.cadimg',compact('produto'));
     }
 }
