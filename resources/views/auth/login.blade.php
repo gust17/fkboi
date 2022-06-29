@@ -22,6 +22,15 @@
 
 </head>
 
+<style>
+    #bg {
+        background: url({{asset('logo.png')}}) no-repeat center center fixed;
+        background-size: cover;
+        height: 100%;
+        overflow: hidden;
+    }
+</style>
+
 <body style="background-color: black">
 
     <div class="container">
@@ -29,20 +38,22 @@
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-xl-12 col-lg-12 col-md-9">
-                <div class="row">
+
+                <div  class="row">
                     <div class="col-lg-6">
-                        <img src="{{asset('logo.png')}}" alt="">
+                        <img class="img img-fluid" src="{{asset('logo.png')}}" alt="">
                     </div>
-                    <div class="col-lg-6">
+                    <br>
+                    <br><br>
+                    <div style="margin-top: 15px" class="col-lg-6">
 
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">FKBOI INVEST</h1>
+
                         </div>
 
 
 
-                        <form class="user" method="POST" action="{{ route('login') }}">
+                        <form id="" class="user" method="POST" action="{{ route('login') }}">
                             @csrf
 
                             <!-- Email Address -->
@@ -95,7 +106,7 @@
                 </div>
 
 
-            </div>
+
 
         </div>
 
