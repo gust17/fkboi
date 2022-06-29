@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use function PHPUnit\Framework\isNull;
+
 class Investimento extends Model
 {
     use HasFactory;
@@ -17,6 +19,7 @@ class Investimento extends Model
         'cprf',
         'assinatura',
         'produto_id',
+        'img'
     ];
 
 
@@ -32,6 +35,15 @@ class Investimento extends Model
             return "Cupom";
         }else{
             return "Bullet";
+        }
+    }
+
+    public function getStatusFormattedAttribute()
+    {
+        if(isNull( $this->attributes['data_pagamento'])){
+            return "ABERTA";
+        }else{
+            return "PAGA";
         }
     }
 }

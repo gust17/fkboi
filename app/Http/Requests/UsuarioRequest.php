@@ -23,9 +23,11 @@ class UsuarioRequest extends FormRequest
      */
     public function rules()
     {
+
+       // dd($this->usuario);
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,id,'.$this->usuario],
             'rg' => ['required'],
             'cpf' => ['required', 'cpf'],
             'telefone' => ['required'],

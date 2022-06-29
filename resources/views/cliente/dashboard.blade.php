@@ -1,5 +1,6 @@
 @extends('padrao.padrao')
 @section('css')
+
     <style>
         p {
             color: white;
@@ -51,6 +52,30 @@
     </style>
 @endsection
 @section('content')
+
+    @if(isset(Auth::user()->investimentos))
+        <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-12 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Investimentos
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{count(Auth::user()->investimentos)}}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-money fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row">
         @forelse ($planos as $plano)
             <div class="modal fade" id="myModal{{ $plano->id }}" role="dialog">
@@ -78,13 +103,12 @@
                     <div class="panel-body outro">
                         <div class="row justify-content-center">
                             <img width="150px" class="img-fluid" src="{{ url("storage/produtos/$plano->img") }}"
-                                alt="">
+                                 alt="">
                         </div>
                         <h1 style="color: #00FF75;font-size:25px" class="panel-title text-center">
                             {{ $plano->name }}
                         </h1>
                         <h6 style="color: white" class="descricao">
-
 
 
                         </h6>
@@ -94,24 +118,23 @@
 
                         <h4>
 
-                            {{ $plano->meses }} meses
+                            Prazo: {{ $plano->meses }} meses
 
 
                         </h4>
-                        <h3> Modalidades </h3>
+                        <h3> Modalidades: </h3>
                         <h2> Cupom {{ $plano->taxa_mes }}% ao Mês</h2>
                         <h2> Bullet {{ $plano->taxa_ano }}% ao Ano</h2>
                         <div class="container">
                             <div class="form-group">
                                 <a style="background-color: #00FF75" class="btn btn-lg btn-block btn-success boleado "
-                                    href="{{ url('assinatura', $plano->id) }}">Invista Agora</a>
+                                   href="{{ url('assinatura', $plano->id) }}">Invista Agora</a>
                                 <a style="background-color: #00FF75" data-toggle="modal"
-                                    data-target="#myModal{{ $plano->id }}"
-                                    class="btn btn-lg btn-block btn-success boleado">Saiba
+                                   data-target="#myModal{{ $plano->id }}"
+                                   class="btn btn-lg btn-block btn-success boleado">Saiba
                                     Mais</a>
                             </div>
                         </div>
-
 
 
                     </div>

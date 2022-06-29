@@ -18,9 +18,13 @@
                             <tr>
                                 <td>{{$investimento->produto->name}}</td>
                                 <td>{{$investimento->tipo_formatted}}</td>
-                                <td>john@example.com</td>
-                                <td>john@example.com</td>
-                                <td></td>
+                                <td>{{$investimento->produto->meses}}</td>
+                                <td>{{$investimento->status_formatted}}</td>
+                                <td>
+                                    <button>Pagamento</button>
+                                    <button>CPRF</button>
+                                    <button>Detalhes</button>
+                                </td>
                             </tr>
                         @empty
                         @endforelse

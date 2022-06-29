@@ -68,4 +68,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Investimento::class);
     }
+
+    public function complementar()
+    {
+        return $this->hasOne(Complementar::class);
+    }
+
+
 }

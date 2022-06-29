@@ -44,6 +44,22 @@
                             value="{{$usuario->nascimento}}" required autocomplete="nascimento" />
                     </div>
                     <div class="form-group">
+                        <label for="">Tipo Usuario</label>
+                        <select class="form-control" name="tipo" id="">
+
+                            <option @if ($usuario->tipo == 0)
+                                selected
+                            @endif value="0">Cliente</option>
+                            <option @if ($usuario->tipo == 1)
+                                selected
+                            @endif
+                            value="1">Vendedor</option>
+                            <option @if ($usuario->tipo == 2)
+                                selected
+                            @endif value="2">Administrador</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <button class="btn btn-success">Cadastrar</button>
                     </div>
 

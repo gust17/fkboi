@@ -37,6 +37,10 @@
                         <label for="">Descriçao</label>
                         <textarea name="descricao" id="" class="form-control" cols="30" rows="10"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="">Ordem</label>
+                        <input name="ordem" type="text" class="form-control">
+                    </div>
 
                     <div class="form-group">
                         <button class="btn btn-success">Salvar</button>

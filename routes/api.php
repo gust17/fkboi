@@ -176,3 +176,89 @@ Route::post('file-upload/frente', function (Request $request) {
 
     // $grava = ['custom' => $request['name'], 'name' => $new_name, 'protocolo_id' => $request['protocolo_id']];
 });
+
+
+Route::post('file-upload/comprovante', function (Request $request) {
+
+    //dd($request->all());
+
+    $rules = array(
+        'img' => 'required|mimes:jpeg,jpg,png,pdf|max:32760'
+    );
+
+    $error = Validator::make($request->all(), $rules);
+
+    if ($error->fails()) {
+        return response()->json(['errors' => $error->errors()->all()]);
+    }
+
+
+
+    $file = $request->file('img');
+    // ou
+    $file = $request->img;
+    $nameFile = "";
+    if ($request->hasFile('img') && $request->file('img')->isValid()) {
+
+        // Define um aleatório para o arquivo baseado no timestamps atual
+        $name = uniqid(date('HisYmd'));
+        //    dd($name);
+
+        // Recupera a extensão do arquivo
+        $extension = $request->img->extension();
+
+        // dd($extension);
+
+        // Define finalmente o nome
+        $nameFile = "{$name}.{$extension}";
+
+        // Faz o upload:
+        $upload = $request->img->storeAs('comprovante', $nameFile,'public');
+        // return $nameFile;
+        // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
+        $produto = \App\Models\Investimento::find($request['investimento_id']);
+        $produto->fill(['img' => $nameFile]);
+        $produto->save();
+        // Verifica se NÃO deu certo o upload (Redireciona de volta)
+        if (!$upload) {
+            return ('error' . ' Falha ao fazer upload');
+        }
+    };
+    //  return ($busca);
+    /* if (count($busca) > 0) {
+        $image->move(public_path('arquivos'), $new_name);
+        $salvar =  $busca->first();
+        $salvar->fill(['verso' => $new_name]);
+        $salvar->save();
+        //dd($cliente->doc);
+        ///  $cliente->doc->fill(['frente' => $new_name]);
+
+
+        // $cliente->doc->save();
+    } else {
+
+        $image->move(public_path('arquivos'), $new_name);
+        // return 'oi';
+        $grava = [
+            'user_id' => $request->cliente_id,
+            'frente' => $new_name,
+            'doc_id' => $request->doc_id
+        ];
+
+        //  return $grava;
+
+        $anexo = Anexo::create($grava);
+    }
+
+    $output = array(
+        'success' => 'Image uploaded successfully',
+        'image' => '<img src="/images/' . $new_name . '" class="img-thumbnail" />'
+    ); */
+    $output = array(
+        'success' => 'Image uploaded successfully',
+        'image' => '<img src="/produtos/' . $nameFile . '" class="img-thumbnail" />'
+    );
+    return $output;
+
+    // $grava = ['custom' => $request['name'], 'name' => $new_name, 'protocolo_id' => $request['protocolo_id']];
+});

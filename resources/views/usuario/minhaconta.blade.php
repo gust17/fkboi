@@ -48,196 +48,133 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title"> Dados Complementares</h3>
-                <div class="card-tools pull-right">
 
-                </div>
             </div>
             <div class="card-body">
+                <form action="{{ url('complementar') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="">Estado Civil:</label>
+                        <select class="form-control" name="estado_civil" id="">
+                            <option value="1">SOLTEIRO</option>
+                            <option value="2">CASADO</option>
+                            <option value="3">DIVORCIADO</option>
+                            <option value="4">VIUVO</option>
+                        </select>
 
-                <div class="form-group">
-                    <label for="">Estado Civil:</label>
-                    <select class="form-control" name="tipochave" id="">
-                        <option value="1">SOLTEIRO</option>
-                        <option value="2">CASADO</option>
-                        <option value="3">DIVORCIADO</option>
-                        <option value="4">VIUVO</option>
-                    </select>
-
-                </div>
-                <div class="form-group">
-                    <label for="">PROFISSÃO</label>
-                    <input type="text" class="form-control" name="profissao">
-                </div>
-
+                    </div>
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                    <div class="form-group">
+                        <label for="">PROFISSÃO</label>
+                        <input type="text"
+                            @if (Auth::user()->complementar) value="{{ Auth::user()->complementar->profissao }}" @endif
+                            class="form-control" name="profissao">
+                    </div>
+                    <div class="form-group">
+                        <button style="background-color: #00ff75;color:black" class="btn btn-block">
+                            Cadastrar
+                        </button>
+                    </div>
+                </form>
 
 
             </div>
         </div>
         <br>
 
-        @if (!Auth::user()->endereco)
-            <div class="card collapsed-box">
-                <div class="card-header">
-                    <h3 class="box-title"> Endereço</h3>
 
-                </div>
-                <div class="card-body">
+        <div class="card collapsed-box">
+            <div class="card-header">
+                <h3 class="box-title"> Endereço</h3>
 
-                    <form action="{{ url('endereco') }}" method="POST" class="form-horizontal">
-                        @csrf
-                        <div class="form-group">
-                            <label for="cep" class="col-sm-2 control-label">CEP</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="cep" id="cep" placeholder="cep">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="endereco" class="col-sm-2 control-label">Endereço</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" name="endereco" class="form-control" id="endereco">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="endereco" class="col-sm-2 control-label">Bairro</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" name="bairro" class="form-control" id="bairro">
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="cliente_id" value="{{ Auth::user()->id }}">
-                        <div class="form-group">
-                            <label for="endereco" class="col-sm-2 control-label">Cidade</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" name="cidade" class="form-control" id="cidade">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="uf" class="col-sm-2 control-label">UF</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" name="uf" class="form-control" id="uf">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="n" class="col-sm-2 control-label">N</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" name="n" class="form-control" id="n">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="complemento" class="col-sm-2 control-label">Complemento</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" name="complemento" class="form-control" id="complemento">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-
-                            <div class="col-sm-12">
-                                <button class="btn btn-primary btn-block">Cadastrar</button>
-                            </div>
-                        </div>
-
-                    </form>
-
-                </div>
             </div>
-        @else
-            <div class="box collapsed-box">
-                <div class="box-header">
-                    <h3 class="box-title"> Endereço</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                        </button>
+            <div class="card-body">
+
+                <form action="{{ url('endereco') }}" method="POST" class="form-horizontal">
+                    @csrf
+                    <div class="form-group">
+                        <label for="cep" class="col-sm-2 control-label">CEP</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"
+                                @if (Auth::user()->endereco) value="{{ Auth::user()->endereco->cep }}" @endif
+                                name="cep" id="cep" placeholder="cep">
+                        </div>
                     </div>
-                </div>
-                <div class="box-body">
+                    <div class="form-group">
+                        <label for="endereco" class="col-sm-2 control-label">Endereço</label>
 
-                    <form action="{{ url('alterendereco') }}" method="POST" class="form-horizontal">
-                        @csrf
-                        <div class="form-group">
-                            <label for="cep" class="col-sm-2 control-label">CEP</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" value="{{ Auth::user()->endereco->cep }}" class="form-control"
-                                    name="cep" id="cep" placeholder="cep">
-                            </div>
+                        <div class="col-sm-10">
+                            <input type="text" name="endereco"
+                                @if (Auth::user()->endereco) value="{{ Auth::user()->endereco->endereco }}" @endif
+                                class="form-control" id="endereco">
                         </div>
-                        <div class="form-group">
-                            <label for="endereco" class="col-sm-2 control-label">Endereço</label>
+                    </div>
 
-                            <div class="col-sm-10">
-                                <input type="text" value="{{ Auth::user()->endereco->endereco }}" name="endereco"
-                                    class="form-control" id="endereco">
-                            </div>
+                    <div class="form-group">
+                        <label for="endereco" class="col-sm-2 control-label">Bairro</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="bairro"
+                                @if (Auth::user()->endereco) value="{{ Auth::user()->endereco->bairro->name }}" @endif
+                                class="form-control" id="bairro">
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="endereco" class="col-sm-2 control-label">Bairro</label>
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                    <div class="form-group">
+                        <label for="endereco" class="col-sm-2 control-label">Cidade</label>
 
-                            <div class="col-sm-10">
-                                <input type="text" name="bairro" value="{{ Auth::user()->endereco->bairro->name }}"
-                                    class="form-control" id="bairro">
-                            </div>
+                        <div class="col-sm-10">
+                            <input type="text" name="cidade"
+                                @if (Auth::user()->endereco) value="{{ Auth::user()->endereco->cidade->name }}" @endif
+                                class="form-control" id="cidade">
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="uf" class="col-sm-2 control-label">UF</label>
 
-                        <input type="hidden" name="cliente_id" value="{{ Auth::user()->id }}">
-                        <div class="form-group">
-                            <label for="endereco" class="col-sm-2 control-label">Cidade</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" name="cidade" value="{{ Auth::user()->endereco->cidade->name }}"
-                                    class="form-control" id="cidade">
-                            </div>
+                        <div class="col-sm-10">
+                            <input type="text" name="uf"
+                                @if (Auth::user()->endereco) value="{{ Auth::user()->endereco->estado->name }}" @endif
+                                class="form-control" id="uf">
                         </div>
-                        <div class="form-group">
-                            <label for="uf" class="col-sm-2 control-label">UF</label>
+                    </div>
 
-                            <div class="col-sm-10">
-                                <input type="text" name="uf" value="{{ Auth::user()->endereco->estado->name }}"
-                                    class="form-control" id="uf">
-                            </div>
+                    <div class="form-group">
+                        <label for="n" class="col-sm-2 control-label">N</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="n"
+                                @if (Auth::user()->endereco) value="{{ Auth::user()->endereco->n }}" @endif
+                                class="form-control" id="n">
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="n" class="col-sm-2 control-label">N</label>
+                    <div class="form-group">
+                        <label for="complemento" class="col-sm-2 control-label">Complemento</label>
 
-                            <div class="col-sm-10">
-                                <input type="text" name="n" value="{{ Auth::user()->endereco->n }}"
-                                    class="form-control" id="n">
-                            </div>
+                        <div class="col-sm-10">
+                            <input type="text" name="complemento"
+                                @if (Auth::user()->endereco) value="{{ Auth::user()->endereco->complemento }}" @endif
+                                class="form-control" id="complemento">
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="complemento" class="col-sm-2 control-label">Complemento</label>
+                    <div class="form-group">
 
-                            <div class="col-sm-10">
-                                <input type="text" name="complemento" value="{{ Auth::user()->endereco->complemento }}"
-                                    class="form-control" id="complemento">
-                            </div>
+                        <div class="col-sm-12">
+                            <button class="btn btn-primary btn-block">Cadastrar</button>
                         </div>
+                    </div>
 
-                        <div class="form-group">
+                </form>
 
-                            <div class="col-sm-12">
-                                <button class="btn btn-primary btn-block">Cadastrar</button>
-                            </div>
-                        </div>
-
-                    </form>
-
-                </div>
             </div>
-        @endif
+        </div>
+
+
+
 
         <div class="card">
             <div class="card-header">
@@ -284,7 +221,7 @@
                     </div>
                     <div class="form-group">
                         <button style="background-color: #00ff75;color:black" class="btn btn-block">
-                           Cadastrar
+                            Cadastrar
                         </button>
                     </div>
 
@@ -298,6 +235,8 @@
                             <th>Codigo</th>
                             <th>Agencia</th>
                             <th>Conta</th>
+                            <th>Chave Pix</th>
+                            <th>Pix</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -307,6 +246,8 @@
                                 <td>{{ $conta->code }}</td>
                                 <td>{{ $conta->agencia }}</td>
                                 <td>{{ $conta->conta }}</td>
+                                <td>{{ $conta->tipo_chave }}</td>
+                                <td>{{ $conta->pix }}</td>
 
                             </tr>
 
@@ -396,5 +337,4 @@
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-
 @endsection

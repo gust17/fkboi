@@ -29,72 +29,71 @@
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="col-xl-12 col-lg-12 col-md-9">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="{{asset('logo.png')}}" alt="">
+                    </div>
+                    <div class="col-lg-6">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div style="background-image: url({{asset('logo.png')}})" class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">FKBOI INVEST</h1>
-                                    </div>
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">FKBOI INVEST</h1>
+                        </div>
 
 
 
-                                    <form class="user" method="POST" action="{{ route('login') }}">
-                                        @csrf
+                        <form class="user" method="POST" action="{{ route('login') }}">
+                            @csrf
 
-                                        <!-- Email Address -->
-
-
-                                        <div class="form-group">
-                                            <input id="email" placeholder="Email" class="form-control form-control-user"
-                                                type="email" name="email" :value="old('email')" required autofocus />
-
-                                        </div>
-
-                                        <!-- Password -->
-                                        <div class="form-group">
+                            <!-- Email Address -->
 
 
-                                            <input id="password" placeholder="Senha" class="form-control form-control-user" type="password"
-                                                name="password" required autocomplete="current-password" />
-                                        </div>
+                            <div class="form-group">
+                                <input id="email" placeholder="Email" class="form-control form-control-user"
+                                       type="email" name="email" :value="old('email')" required autofocus />
 
-
-                                            <button style="background-color: #00ff75" class="btn btn-primary btn-user btn-block">
-                                                {{ __('Log in') }}
-                                            </button>
-
-                                        <!-- Remember Me -->
-                                        <div class="block mt-4">
-                                            <label for="remember_me" class="inline-flex items-center">
-                                                <input id="remember_me" type="checkbox"
-                                                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                                    name="remember">
-                                                <span
-                                                    class="ml-2 text-sm text-gray-600">Lembre-me</span>
-                                            </label>
-                                        </div>
-
-
-                                    </form>
-                                    <hr>
-
-                                    <div class="text-center">
-                                        <a class="small" href="{{ route('password.request') }}">Esqueceu sua senha?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="{{url('register')}}">Crie uma conta agora</a>
-                                    </div>
-                                </div>
                             </div>
+
+                            <!-- Password -->
+                            <div class="form-group">
+
+
+                                <input id="password" placeholder="Senha" class="form-control form-control-user" type="password"
+                                       name="password" required autocomplete="current-password" />
+                            </div>
+
+
+                            <button style="background-color: #00ff75" class="btn btn-primary btn-user btn-block">
+                                {{ __('Log in') }}
+                            </button>
+
+                            <!-- Remember Me -->
+                            <div class="block mt-4">
+                                <label for="remember_me" class="inline-flex items-center">
+                                    <input id="remember_me" type="checkbox"
+                                           class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                           name="remember">
+                                    <span
+                                        class="ml-2 text-sm text-gray-600">Lembre-me</span>
+                                </label>
+                            </div>
+
+
+                        </form>
+                        <hr>
+
+                        <div class="text-center">
+                            <a class="small" href="{{ route('password.request') }}">Esqueceu sua senha?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" href="{{url('register')}}">Crie uma conta agora</a>
+                        </div>
+                        <div class="p-5">
+
                         </div>
                     </div>
                 </div>
+
 
             </div>
 
