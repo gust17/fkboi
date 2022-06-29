@@ -12108,15 +12108,16 @@ a:focus {
 }
 
 .bg-register-image {
-    background: url(https://source.unsplash.com/Mv9hjnEUHR4/600x800);
+
+    background-repeat: no-repeat;
     background-position: center;
-    background-size: cover
+    background-size: 450px
 }
 
 .bg-password-image {
     background: url(https://source.unsplash.com/oWTW-jNGl9I/600x800);
     background-position: center;
-    background-size: cover
+    background-size: auto
 }
 
 form.user .custom-checkbox.small label {

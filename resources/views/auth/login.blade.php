@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>SB Admin 2 - Register</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,106 +22,97 @@
 
 </head>
 
-<style>
-    #bg {
-        background: url({{asset('logo.png')}}) no-repeat center center fixed;
-        background-size: cover;
-        height: 100%;
-        overflow: hidden;
-    }
-</style>
+<body style="background-color: black" class="">
 
-<body style="background-color: black">
-
-    <div class="container">
-
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
+<div class="container">
 
 
-                <div  class="row">
-                    <div class="col-lg-6">
-                        <img class="img img-fluid" src="{{asset('logo.png')}}" alt="">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+            <div class="col-lg-5 bg-register-image">
+                <br>
+                <br><br>
+                <br><br>
+                <img style="display: block;
+                margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;" class="img img-fluid" src="{{asset('logo.png')}}" alt="">
+            </div>
+            <div class="col-lg-7">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 style="color: #00FF75" class="h4  mb-4">LOGIN</h1>
                     </div>
-                    <br>
-                    <br><br>
-                    <div style="margin-top: 15px" class="col-lg-6">
 
-                        <div class="text-center">
+                    <form class="user" method="POST" action="{{ route('login') }}">
+                        @csrf
 
+                        <!-- Email Address -->
+
+
+                        <div class="form-group">
+                            <input id="email" placeholder="Email" class="form-control form-control-user"
+                                   type="email" name="email" :value="old('email')" required autofocus />
+
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+
+
+                            <input id="password" placeholder="Senha" class="form-control form-control-user" type="password"
+                                   name="password" required autocomplete="current-password" />
                         </div>
 
 
+                        <button style="background-color: #00ff75" class="btn btn-primary btn-user btn-block">
+                            {{ __('Log in') }}
+                        </button>
 
-                        <form id="" class="user" method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            <!-- Email Address -->
-
-
-                            <div class="form-group">
-                                <input id="email" placeholder="Email" class="form-control form-control-user"
-                                       type="email" name="email" :value="old('email')" required autofocus />
-
-                            </div>
-
-                            <!-- Password -->
-                            <div class="form-group">
-
-
-                                <input id="password" placeholder="Senha" class="form-control form-control-user" type="password"
-                                       name="password" required autocomplete="current-password" />
-                            </div>
-
-
-                            <button style="background-color: #00ff75" class="btn btn-primary btn-user btn-block">
-                                {{ __('Log in') }}
-                            </button>
-
-                            <!-- Remember Me -->
-                            <div class="block mt-4">
-                                <label for="remember_me" class="inline-flex items-center">
-                                    <input id="remember_me" type="checkbox"
-                                           class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                           name="remember">
-                                    <span
-                                        class="ml-2 text-sm text-gray-600">Lembre-me</span>
-                                </label>
-                            </div>
-
-
-                        </form>
-                        <hr>
-
-                        <div class="text-center">
-                            <a class="small" href="{{ route('password.request') }}">Esqueceu sua senha?</a>
+                        <!-- Remember Me -->
+                        <div class="block mt-4">
+                            <label for="remember_me" class="inline-flex items-center">
+                                <input id="remember_me" type="checkbox"
+                                       class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                       name="remember">
+                                <span
+                                    class="ml-2 text-sm text-gray-600">Lembre-me</span>
+                            </label>
                         </div>
-                        <div class="text-center">
-                            <a class="small" href="{{url('register')}}">Crie uma conta agora</a>
-                        </div>
-                        <div class="p-5">
 
-                        </div>
+
+                    </form>
+                    <hr>
+
+                    <div class="text-center">
+                        <a class="small" href="{{ route('password.request') }}">Esqueceu sua senha?</a>
                     </div>
+                    <div class="text-center">
+                        <a class="small" href="{{url('register')}}">Crie uma conta agora</a>
+                    </div>
+
                 </div>
-
-
-
-
+            </div>
         </div>
-
     </div>
+</div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
 
 </body>
 
 </html>
+
+
+
