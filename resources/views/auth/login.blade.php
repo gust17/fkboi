@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>FKBOIINVEST - LOGIN</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -87,10 +87,10 @@
                     <hr>
 
                     <div class="text-center">
-                        <a class="small" href="{{ route('password.request') }}">Esqueceu sua senha?</a>
+                        <a style="color: #00FF75" class="small" href="{{ route('password.request') }}">Esqueceu sua senha?</a>
                     </div>
                     <div class="text-center">
-                        <a class="small" href="{{url('register')}}">Crie uma conta agora</a>
+                        <a style="color: #00FF75" class="small" href="{{url('register')}}">Crie uma conta agora</a>
                     </div>
 
                 </div>
