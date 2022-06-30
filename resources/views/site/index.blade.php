@@ -165,6 +165,11 @@
 
         valor = $('#valor').val();
         novovalor = parseFloat(valor) - parseFloat(5000);
+
+        if (novovalor<100000){
+            novovalor = 100000;
+        }
+
         busca = document.getElementById("valor");
         document.getElementById("valor").value = novovalor;
         //alert(novovalor);
