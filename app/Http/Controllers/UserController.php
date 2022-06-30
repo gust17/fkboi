@@ -39,8 +39,10 @@ class UserController extends Controller
     {
         return view('adminstrador.usuarios.show', compact('usuario'));
     }
-    public function update(UsuarioRequest $request, User $user)
+    public function update(Request $request)
     {
+
+        $user = User::find($request->user_id);
         $user->fill($request->all());
         $user->save();
         return redirect()->route('usuario.index');

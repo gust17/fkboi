@@ -14,7 +14,7 @@
             <div class="card-body">
                 <form action="{{ route('usuario.update',$usuario) }}" method="post">
                     @csrf
-                    @method('PUT')
+                    @method('PATCH')
 
                     <div class="form-group">
                         <label for="">Nome</label>
@@ -25,6 +25,7 @@
                         <label for="">Email</label>
                         <input type="email" name="email" value="{{$usuario->email}}" class="form-control">
                     </div>
+                    <input type="hidden" name="user_id" value="{{$usuario->id}}">
                     <div class="form-group">
                         <label for="">CPF</label>
                         <input type="text" name="cpf" value="{{$usuario->cpf}}" class="form-control">
@@ -32,6 +33,10 @@
                     <div class="form-group">
                         <label for="">RG</label>
                         <input type="text" name="rg" value="{{$usuario->rg}}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Expedidor</label>
+                        <input type="text" name="expedidor" value="{{$usuario->expedidor}}" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="">Telefone</label>
@@ -53,10 +58,10 @@
                             <option @if ($usuario->tipo == 1)
                                 selected
                             @endif
-                            value="1">Vendedor</option>
+                            value="1">Administrador</option>
                             <option @if ($usuario->tipo == 2)
                                 selected
-                            @endif value="2">Administrador</option>
+                            @endif value="2">Vendedor</option>
                         </select>
                     </div>
                     <div class="form-group">
