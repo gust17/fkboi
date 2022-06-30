@@ -7,28 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
-        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
     </script>
 </head>
 <style>
-    p{
-        color:white;
+    p {
+        color: white;
         font-weight: bold;
     }
-    h4{
-        color:white;
+
+    h4 {
+        color: white;
         font-weight: bold;
     }
-    .cor{
+
+    .cor {
         background-color: #00FF75;
         font-weight: bold;
     }
@@ -36,85 +38,115 @@
 
 <body style="background-color: black;border: 1px;">
 
-    <div class="container border" style="border-color: #00FF75">
-        <div style="background-color: black" class="panel">
+<div class="container border" style="border-color: #00FF75">
+    <div style="background-color: black" class="panel">
 
-            <div style="" class="panel-body text-center">
-                <center>
+        <div style="" class="panel-body text-center">
+            <center>
 
-                    <strong>
-                        <h2 style="color: #00FF75;font-size:45px;font-weight: bold;">Simulador de Investimento</h2>
-                    </strong>
-                    <br>
-                    <div class="row">
-                        <div class="col-xs-4 text-right">
-                            <button class="btn  btn-lg cor"
-                                onclick="diminui()">-</button></div>
-                        <div class="col-xs-4"><input style="color: #00FF75;text-align: center;background-color: black;border-color: #00FF75" class="form-control input-lg" type="text" id="valor"
-                                value="100000"></div>
-                        <div class="col-xs-4 text-left">
-                            <button class="btn cor btn-lg cor"
-                                onclick="aumenta()">+</button></div>
-                    </div>
-
-
-
-                </center>
-                <br>
-
-
-                <p style="color: white">Selecione o período de duração do Investimento</p>
-
-
-                <div class="row text-center">
-                    <button class="btn cor btn-lg "> <input class="meses" type="radio" id="meses" name="meses" value="1">12 meses</button>
-                    <button class="btn cor btn-lg ">  <input class="meses" type="radio" id="meses" name="meses" value="2">24 meses</button>
-                    <button class="btn cor btn-lg ">  <input class="meses" type="radio" id="meses" name="meses" value="3">48 meses</button>
-                </div>
-                <br>
-                <div class="row text-center">
-                    <button class="btn cor btn-lg"> <input type="radio" id="css" name="modalidade" value="1">CUPOM</button>
-                    <button class="btn cor btn-lg">  <input type="radio" id="css" name="modalidade" value="2">BULLET</button>
-                </div>
+                <strong>
+                    <h2 style="color: #00FF75;font-size:45px;font-weight: bold;">Simulador de Investimento</h2>
+                </strong>
                 <br>
                 <div class="row">
-                    <button onclick="buscavalor()" class="btn cor btn-lg btn-block">Simule Agora</button>
+                    <div class="col-xs-3 text-right">
+                        <button class="btn  btn-lg cor"
+                                onclick="diminui()">-
+                        </button>
+                    </div>
+                    <div class="col-xs-6">
+
+                        <div class="input-group">
+                            <span
+                                style="color: #00FF75;text-align: center;background-color: black;border-color: #00FF75"
+                                class="input-group-addon">R$</span>
+                            <input
+                                style="color: #00FF75;text-align: center;background-color: black;border-color: #00FF75"
+                                class="form-control input-lg" type="text" id="valor"
+                                value="100000">
+                            <span
+                                style="color: #00FF75;text-align: center;background-color: black;border-color: #00FF75"
+                                class="input-group-addon">.00</span>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3 text-left">
+                        <button class="btn cor btn-lg cor"
+                                onclick="aumenta()">+
+                        </button>
+                    </div>
                 </div>
-                <br>
-                <div class="tab-content text-center">
 
 
+            </center>
+            <br>
 
 
-                        <p id="porcentagem" style="font-size: 19px;color:white"></p>
+            <p style="color: white">Selecione o período de duração do Investimento</p>
 
 
+            <div class="row text-center">
 
-
-                </div>
                 <div class="row">
-                    <div class="col-md-6 text-center">
-                        <h4>Início do Investimento</h4>
-                        <p>{{ $now->format('d/m/y') }}</p>
+                    <div style="margin-bottom: 10px" class="col-md-4">
+                        <button onclick="acender(1)" class="btn cor btn-lg "><input class="meses" type="radio" id="meses1" name="meses"
+                                                               value="1">12 meses
+                        </button>
                     </div>
-                    <div class="col-md-6 text-center">
-                        <h4 id="primeiro"></h4>
-                        <p id="futuro"></p>
+
+                    <div style="margin-bottom: 10px" class="col-md-4">
+                        <button onclick="acender(2)" class="btn cor btn-lg "><input class="meses" type="radio" id="meses2" name="meses"
+                                                               value="2">24 meses
+                        </button>
                     </div>
-                    <div class="col-md-12 text-center">
-                        <h4 id="mensagem"></h4>
-                        <p id="rendimento"></p>
+
+                    <div style="margin-bottom: 10px" class="col-md-4">
+                        <button onclick="acender(3)" class="btn cor btn-lg "><input class="meses" type="radio" id="meses3" name="meses"
+                                                               value="3">48 meses
+                        </button>
                     </div>
+                </div>
+
+
+            </div>
+            <br>
+            <div class="row text-center">
+                <button onclick="acendermetodo(1)" class="btn cor btn-lg"><input type="radio" id="css1" name="modalidade" value="1">CUPOM</button>
+                <button onclick="acendermetodo(2)" class="btn cor btn-lg"><input type="radio" id="css2" name="modalidade" value="2">BULLET</button>
+            </div>
+            <br>
+            <div class="row">
+                <button onclick="buscavalor()" class="btn cor btn-lg btn-block">Simule Agora</button>
+            </div>
+            <br>
+            <div class="tab-content text-center">
+
+
+                <p id="porcentagem" style="font-size: 19px;color:white"></p>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <h4>Início do Investimento</h4>
+                    <p>{{ $now->format('d/m/y') }}</p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h4 id="primeiro"></h4>
+                    <p id="futuro"></p>
+                </div>
+                <div class="col-md-12 text-center">
+                    <h4 id="mensagem"></h4>
+                    <p id="rendimento"></p>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
     </div>
+
+
+</div>
 
 </body>
 <script>
@@ -143,7 +175,7 @@
     function buscaresultado(tipo) {
         valor = $('#valor').val();
         //alert(tipo);
-        $.get("api/datavalores/" + tipo + "/valor/" + valor, function(resultado) {
+        $.get("api/datavalores/" + tipo + "/valor/" + valor, function (resultado) {
             var datas = resultado;
             futuro = datas.data;
             rendimento = datas.rendimento;
@@ -161,12 +193,13 @@
 
 
     }
+
     function buscavalor() {
         valor = $('#valor').val();
         modalidade = $("input[type=radio][name=modalidade]:checked").val();
         meses = $("input[type=radio][name=meses]:checked").val();
-       // alert(modalidade);
-        $.get("api/buscaval/" + meses + "/valor/" + valor+"/modalidade/"+modalidade, function(resultado) {
+        // alert(modalidade);
+        $.get("api/buscaval/" + meses + "/valor/" + valor + "/modalidade/" + modalidade, function (resultado) {
             var datas = resultado;
             futuro = datas.data;
             rendimento = datas.rendimento;
@@ -194,6 +227,18 @@
 </script>
 
 <script>
+
+    function acender(id) {
+        var elm = document.getElementById('meses'+id);
+        //alert('oi');
+        elm.checked = !elm.checked;
+    }
+
+    function acendermetodo(id) {
+        var elm = document.getElementById('css'+id);
+
+        elm.checked = !elm.checked;
+    }
 
 </script>
 

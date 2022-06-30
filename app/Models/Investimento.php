@@ -19,7 +19,8 @@ class Investimento extends Model
         'cprf',
         'assinatura',
         'produto_id',
-        'img'
+        'img',
+        'status'
     ];
 
 
@@ -38,12 +39,25 @@ class Investimento extends Model
         }
     }
 
+
+
     public function getStatusFormattedAttribute()
     {
-        if(isNull( $this->attributes['data_pagamento'])){
-            return "ABERTA";
-        }else{
-            return "PAGA";
+        switch ($this->attributes['status']) {
+
+            case 0;
+                echo "Aguardando Pagamento";
+                break;
+
+            case 1;
+                echo "Contrato Vigente";
+                break;
+
+
+            case 2;
+                echo "Concluido";
+                break;
+
         }
     }
 }

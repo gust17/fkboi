@@ -42,6 +42,25 @@ Route::get('/dashboard', function () {
         $planos = Produto::all();
         return view('cliente.dashboard', compact('planos'))->with('success', 'Task Created Successfully!');
     }
+    if ($user->tipo == 2) {
+        $clientes = Auth::user()->indicacaos;
+        $ativos = 0;
+        $inativos = 0;
+        $aberto = 0;
+        $investido = 0;
+        foreach ($clientes as $cliente) {
+            $aberto += $cliente->getTotalAberto();
+            $investido += $cliente->getTotalInvestido();
+            if ($cliente->getAtivoInvestimento() == 1) {
+                $ativos++;
+            } else {
+                $inativos++;
+            }
+        }
+        //dd($inativos);
+        $totalclientes = Auth::user()->indicacaos->count();
+        return view('vendedor.index', compact('totalclientes', 'ativos', 'inativos','aberto','investido'));
+    }
     $totalclientes = User::where('tipo', 0)->count();
     return view('usuario.index', compact('totalclientes'));
 })->middleware(['auth'])->name('dashboard');
@@ -136,16 +155,21 @@ Route::post('endereco', function (EnderecoRequest $request) {
     }
 
 
-
-
-
     return redirect()->back();
 
     //dd($bairro);
 });
+Route::post('register/indica', [ClienteController::class, 'indicacao']);
 
 
+/////Acessos Vendedor
+///
+///
+///
+///
 
-
+Route::prefix('vendedor')->group(function () {
+    Route::get('/cliente', [\App\Http\Controllers\VendedorController::class, 'clientes']);
+});
 
 require __DIR__ . '/auth.php';

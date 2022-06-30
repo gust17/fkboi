@@ -56,6 +56,11 @@
                     <div class="form-group">
                         <label for="">Estado Civil:</label>
                         <select class="form-control" name="estado_civil" id="">
+                            @if (Auth::user()->complementar)
+                                <option value="{{Auth::user()->complementar->estado_civil}}">{{Auth::user()->complementar->estado_civil_formatted}}</option>
+
+                            @endif
+
                             <option value="1">SOLTEIRO</option>
                             <option value="2">CASADO</option>
                             <option value="3">DIVORCIADO</option>
@@ -164,7 +169,7 @@
                     <div class="form-group">
 
                         <div class="col-sm-12">
-                            <button class="btn btn-primary btn-block">Cadastrar</button>
+                            <button style="background-color: #00ff75;color:black">Cadastrar</button>
                         </div>
                     </div>
 

@@ -57,14 +57,15 @@
                    @include('cliente.main')
                     @break
 
-                @case(2)
-                    Second case...
-                    @break
-
-
                 @case(1)
                     @include('adminstrador.main')
                     @break
+                @case(2)
+                    @include('vendedor.main')
+                    @break
+
+
+
             @endswitch
 
             <li class="nav-item">

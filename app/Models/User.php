@@ -60,10 +60,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Conta::class);
     }
+
     public function endereco()
     {
         return $this->hasOne(Endereco::class);
     }
+
     public function investimentos()
     {
         return $this->hasMany(Investimento::class);
@@ -72,6 +74,28 @@ class User extends Authenticatable
     public function complementar()
     {
         return $this->hasOne(Complementar::class);
+    }
+
+    public function indicacaos()
+    {
+        return $this->hasMany(User::class, 'quem', 'link');
+    }
+
+    public function getAtivoInvestimento()
+    {
+        if (count($this->investimentos->where('status', 1)) > 0) {
+            return 1;
+        }
+    }
+
+
+    public function getTotalInvestido()
+    {
+        return $this->investimentos->where('status',1)->sum('valor');
+    }
+    public function getTotalAberto()
+    {
+        return $this->investimentos->where('status',0)->sum('valor');
     }
 
 

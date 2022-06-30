@@ -21,7 +21,7 @@
                                 <td>{{$investimento->produto->meses}}</td>
                                 <td>{{$investimento->status_formatted}}</td>
                                 <td>
-                                    <button>Pagamento</button>
+                                    <a href="{{url('pagamento',$investimento->id)}}" class="btn">Pagamento</a>
                                     <button>CPRF</button>
                                     <button>Detalhes</button>
                                 </td>
