@@ -42,17 +42,27 @@
                     @csrf
                     <center>
                         <div class="row justify-content-center">
-                            <div class="col-xs-4">
-                                <button class="btn  btn-lg cor" onclick="diminui()">-</button>
+                            <div class="col-xs-3">
+                                <button type="button" class="btn  btn-lg cor" onclick="diminui()">-</button>
                             </div>
                             <input type="hidden" name="produto_id" value="{{ $produto->id }}">
-                            <div class="col-xs-4">
-                                <input
-                                    style="color: #00FF75;text-align: center;background-color: black;border-color: #00FF75"
-                                    class="form-control input-lg" name="valor" type="text" id="valor" value="100000">
+                            <div class="col-xs-6">
+
+                                <div class="input-group">
+                                    <span style="color: #00FF75;text-align: center;background-color: black;border-color: #00FF75" class="input-group-text">R$</span>
+                                    <input
+                                        style="color: #00FF75;text-align: center;background-color: black;border-color: #00FF75"
+                                        class="form-control input-lg" name="valor" type="text" id="valor"
+                                        value="100000">
+                                    <span style="color: #00FF75;text-align: center;background-color: black;border-color: #00FF75" class="input-group-text">.00</span>
+
+
+
+
+                                </div>
                             </div>
-                            <div class="col-xs-4 text">
-                                <button class="btn cor btn-lg cor" onclick="aumenta()">+</button>
+                            <div class="col-xs-3 text">
+                                <button type="button" class="btn cor btn-lg cor" onclick="aumenta()">+</button>
                             </div>
                         </div>
 
@@ -68,8 +78,8 @@
 
                     <div class="form-group">
                         <center>
-                            <a class="btn cor btn-lg"> <input type="radio" id="css" name="modalidade" value="1">CUPOM</a>
-                            <a class="btn cor btn-lg"> <input type="radio" id="css" name="modalidade" value="2">BULLET</a>
+                            <a onclick="acendermetodo(1)" class="btn cor btn-lg"> <input type="radio" id="css1" name="modalidade" value="1">CUPOM</a>
+                            <a onclick="acendermetodo(2)" class="btn cor btn-lg"> <input type="radio" id="css2" name="modalidade" value="2">BULLET</a>
                         </center>
                     </div>
                     <br>
@@ -102,7 +112,7 @@
                     </div>
                     <div class="row">
                         <a onclick="buscavalor()" class="btn cor btn-lg btn-block">Simule Agora</a>
-                        <button class="btn cor btn-lg btn-block">Invista</button>
+                        <button type="submit" class="btn cor btn-lg btn-block">Invista</button>
                     </div>
                 </form>
 
@@ -133,6 +143,11 @@
 
             valor = $('#valor').val();
             novovalor = parseFloat(valor) - parseFloat(5000);
+
+            if (novovalor<100000){
+                novovalor = 100000;
+            }
+
             busca = document.getElementById("valor");
             document.getElementById("valor").value = novovalor;
             //alert(novovalor);
@@ -194,6 +209,13 @@
                 });
 
 
+        }
+    </script>
+    <script>
+        function acendermetodo(id) {
+            var elm = document.getElementById('css'+id);
+
+            elm.checked = !elm.checked;
         }
     </script>
 @endsection

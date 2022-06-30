@@ -89,6 +89,9 @@ class User extends Authenticatable
     }
 
 
+
+
+
     public function getTotalInvestido()
     {
         return $this->investimentos->where('status',1)->sum('valor');
