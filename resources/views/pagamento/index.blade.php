@@ -31,7 +31,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row justify-content-center">
-                        <img width="80%" src="{{url('storage/comprovante',$investimento->img)}}" alt="">
+                        <img width="80%" src="https://arquivos.sfo3.digitaloceanspaces.com/comprovante/{{$investimento->img}}" alt="">
 
 
                     </div>

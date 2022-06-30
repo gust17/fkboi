@@ -51,6 +51,7 @@ return [
             'endpoint' => 'https://sfo3.digitaloceanspaces.com',
             'region' => 'sfo3',
             'bucket' => 'arquivos',
+            'visibility' => 'public',
 
         ],
 

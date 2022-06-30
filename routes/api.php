@@ -127,7 +127,7 @@ Route::post('file-upload/frente', function (Request $request) {
         $nameFile = "{$name}.{$extension}";
 
         // Faz o upload:
-        $upload = $request->img->storeAs('produtos', $nameFile,'public');
+        $upload = $request->img->storeAs('produtos', $nameFile,'s3');
         // return $nameFile;
         // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
         $produto = Produto::find($request['produto_id']);
