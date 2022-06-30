@@ -213,7 +213,12 @@ Route::post('file-upload/comprovante', function (Request $request) {
         $nameFile = "{$name}.{$extension}";
 
         // Faz o upload:
-        $upload = $request->img->storeAs('comprovante', $nameFile,'public');
+        $upload = $request->img->storeAs('comprovante', $nameFile,'s3');
+
+        //$path = \Illuminate\Support\Facades\Storage::disk('s3')->put('comprovantes', $request->img);
+        //$path = \Illuminate\Support\Facades\Storage::disk('s3')->url($path);
+
+        //dd($path);
         // return $nameFile;
         // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
         $produto = \App\Models\Investimento::find($request['investimento_id']);
