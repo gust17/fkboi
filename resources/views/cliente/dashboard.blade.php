@@ -102,7 +102,7 @@
                 <div id="selecionado{{ $plano->id }}" class="panel borda intas">
                     <div class="panel-body outro">
                         <div class="row justify-content-center">
-                            <img width="150px" class="img-fluid" src="{{ url("storage/produtos/$plano->img") }}"
+                            <img width="150px" class="img-fluid" src="https://arquivos.sfo3.digitaloceanspaces.com/comprovante/{{$plano->img}}"
                                  alt="">
                         </div>
                         <h1 style="color: #00FF75;font-size:25px" class="panel-title text-center">

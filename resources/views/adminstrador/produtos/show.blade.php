@@ -59,7 +59,7 @@
 
         <div class="card-body">
             <div class="form-group">
-                <img width="250px" class="img-fluid" src="{{ url("storage/produtos/$produto->img") }}" alt="">
+                <img width="250px" class="img-fluid" src="https://arquivos.sfo3.digitaloceanspaces.com/comprovante/{{$produto->img}}" alt="">
             </div>
             <div class="form-group">
                 <label for="">Nome</label>
