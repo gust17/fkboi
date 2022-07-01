@@ -67,7 +67,7 @@
                         </div>
 
 
-                        <button style="background-color: #00ff75" class="btn btn-primary btn-user btn-block">
+                        <button style="background-color: #00ff75;color: black" class="btn btn-user btn-block">
                             {{ __('Log in') }}
                         </button>
 
