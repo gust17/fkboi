@@ -61,13 +61,29 @@ Route::get('/dashboard', function () {
         $totalclientes = Auth::user()->indicacaos->count();
         return view('vendedor.index', compact('totalclientes', 'ativos', 'inativos','aberto','investido'));
     }
-    $totalclientes = User::where('tipo', 0)->count();
-    return view('usuario.index', compact('totalclientes'));
+    $clientes = User::where('tipo', 0)->get();
+    $ativos = 0;
+    $inativos = 0;
+    $aberto = 0;
+    $investido = 0;
+    foreach ($clientes as $cliente) {
+        $aberto += $cliente->getTotalAberto();
+        $investido += $cliente->getTotalInvestido();
+        if ($cliente->getAtivoInvestimento() == 1) {
+            $ativos++;
+        } else {
+            $inativos++;
+        }
+    }
+
+    return view('usuario.index', compact('ativos', 'inativos','aberto','investido'));
 })->middleware(['auth'])->name('dashboard');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('produto', ProdutoController::class);
     Route::resource('usuario', UserController::class);
+    Route::get('clientes', [UserController::class,'cliente']);
+    Route::get('investimentos',[AdminController::class,'investimentos']);
     Route::get('produto/cadimg/{id}', [ProdutoController::class, 'cadimg'])->name('produto.cadimg');
 });
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Investimento;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -29,5 +30,16 @@ class AdminController extends Controller
     {
 
         return view('usuario.minhaconta');
+    }
+
+
+    public function investimentos()
+    {
+        $investimentos = Investimento::all();
+
+        return view('adminstrador.investimento.index',compact('investimentos'));
+
+
+
     }
 }

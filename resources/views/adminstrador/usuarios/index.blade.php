@@ -6,7 +6,7 @@
     <br><br>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            Lista de Usuários
+            Lista de Usuários {{$tipo}}
         </div>
 
         <div class="card-body">

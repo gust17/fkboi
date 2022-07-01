@@ -11,11 +11,16 @@ class UserController extends Controller
 {
     public function index()
     {
-        $usuarios = User::all();
-
-        return view('adminstrador.usuarios.index', compact('usuarios'));
+        $usuarios = User::where('tipo','!=',0)->get();
+        $tipo = "Sistema";
+        return view('adminstrador.usuarios.index', compact('usuarios','tipo'));
     }
-
+    public function cliente()
+    {
+        $usuarios = User::where('tipo',0)->get();
+        $tipo = "Cliente";
+        return view('adminstrador.usuarios.index', compact('usuarios','tipo'));
+    }
     public function create()
     {
         return view('adminstrador.usuarios.create');
