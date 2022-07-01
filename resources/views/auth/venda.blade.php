@@ -70,8 +70,8 @@
                             <div class="col-sm-6 mb-3 mb-sm-0">
 
                                 <input id="nascimento" placeholder="Data de Nascimento"
-                                       class="form-control form-control-user" type="text"
-                                       onfocus="(this.type='date')" onblur="(this.type='text')" name="nascimento"
+                                       class="form-control form-control-user" type="date"
+                                      name="nascimento"
                                        value="{{ old('nascimento') }}" required autocomplete="nascimento"/>
                             </div>
                             <div class="col-sm-6">
