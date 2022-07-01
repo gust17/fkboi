@@ -49,12 +49,8 @@
                 </strong>
                 <br>
                 <div class="row">
-                    <div class="col-xs-3 text-right">
-                        <button class="btn  btn-lg cor"
-                                onclick="diminui()">-
-                        </button>
-                    </div>
-                    <div class="col-xs-6">
+
+                    <div class="col-xs-12">
 
                         <div class="input-group">
                             <span
@@ -71,9 +67,16 @@
 
                         </div>
                     </div>
-
-                    <div class="col-xs-3 text-left">
-                        <button class="btn cor btn-lg cor"
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-xs-6 text-right">
+                        <button class="btn btn-block btn-lg cor"
+                                onclick="diminui()">-
+                        </button>
+                    </div>
+                    <div class="col-xs-6 text-left">
+                        <button class="btn btn-block cor btn-lg cor"
                                 onclick="aumenta()">+
                         </button>
                     </div>
