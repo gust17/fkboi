@@ -31,7 +31,7 @@
 <body style="background-color: black" class="">
 
 <div class="container">
-@include('flash-message)
+@include('flash-message')
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
