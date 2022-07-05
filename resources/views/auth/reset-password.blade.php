@@ -31,7 +31,16 @@
 <body style="background-color: black" class="">
 
 <div class="container">
-
+@include('flash-message)
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
@@ -65,7 +74,7 @@
                             <label class="cor" for="">Email</label>
 
                             <input id="email" class="form-control" type="email" name="email"
-                                     :value="old('email', $request->email)" required autofocus/>
+                                     value="{{old('email', $request->email)}}" required autofocus/>
                         </div>
 
                         <!-- Password -->
