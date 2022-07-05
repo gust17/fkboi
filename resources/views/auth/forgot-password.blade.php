@@ -46,6 +46,7 @@
                         <h1 style="color: #00FF75" class="h4  mb-4">Esqueceu sua senha?</h1>
                     </div>
 
+                    @include('flash-message')
 
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
