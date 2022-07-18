@@ -48,6 +48,8 @@ class UserController extends Controller
     {
 
         $user = User::find($request->user_id);
+
+        dd($user);
         $user->fill($request->all());
         $user->save();
         return redirect()->route('usuario.index');

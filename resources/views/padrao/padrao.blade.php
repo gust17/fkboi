@@ -137,6 +137,8 @@
                         </div>
                     @endif
 
+                    {{Auth::user()->tipo}}
+
                     <!-- Page Heading -->
 
 

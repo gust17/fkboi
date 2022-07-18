@@ -30,6 +30,9 @@
                         <td>{{$investimento->produto->meses}}</td>
                         <td>{{$investimento->status_formatted}}</td>
                         <td>
+                            <button>Add CPRF</button>
+                            <button>Pagamento</button>
+                        </td>
 
                     </tr>
                 @empty
